@@ -6,27 +6,29 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	$scope.courses = $firebaseObject(ref);
 
 	var key;
-	$scope.score = function(index) {		
+	$scope.score = function(index) {
 		key = index;
 		$scope.myModalLabel = $scope.courses[key].cname;
-		var postsRef = ref.child(key).child('posts');	
+		var postsRef = ref.child(key).child('posts');
 		$scope.posts = $firebaseObject(postsRef);
-		var tureNum = 0;
-		var falseNum = 0;
-		angular.forEach($scope.posts, function(value, key) {
+		$scope.recommend = "";
+		$scope.message = "";
+		getRecommendNum($scope.courses[index].posts);
+	}
+
+	getRecommendNum = function(data) {
+		$scope.tureNum = 0;
+		$scope.falseNum = 0;
+		angular.forEach(data, function(value, key) {			
 			if (value.recommend == 1) {	
-				tureNum++;
-				console.log($scope.posts + ', value' + value);
+				$scope.tureNum++;
 			} else {
-				falseNum++;	
-				console.log($scope.posts + ', value' + value);
+				$scope.falseNum++;	
 			}
 		});
-		console.log( 'tureNum:' + tureNum  + ', falseNum:' + falseNum);
 	}
 
 	$scope.addPost = function (recommendValue, messagesValue) {
-		//console.log('key: ' + key);
 		var postsRef = ref.child(key).child('posts');	
 		$scope.posts = $firebaseObject(postsRef);
 
@@ -37,6 +39,11 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 			if (!messagesValue) {
 				messagesValue = '';
 			};
+			if (recommendValue == 1) {	
+				$scope.tureNum++;
+			} else {
+				$scope.falseNum++;	
+			}
 			var dateValue = Date.now();
 			postsRef.push({
 				userid: authData.facebook.id, 
@@ -47,10 +54,9 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 				date: dateValue
 			});
 			$scope.recommend = "";
-			$scope.message = "";
+			$scope.message = "";			
 		}
 	}
-	
 
 	$scope.bug = function() {
 		$('#bugModal').modal('show');
