@@ -75,7 +75,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="course in courses | filter:searchText">
+						<tr ng-repeat="(key, course) in courses | filter:searchText">
 							<td>{{course.cname}}</td>
 							<td>{{course.courseid}}</td>
 							<td>{{course.class}}</td>
@@ -84,7 +84,7 @@
 							<td>{{course.teachers}}</td>
 							<td>{{course.place}}</td>
 							<td>{{course.time}}</td>  
-							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score($index)">給評價！</button></td>
+							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score(key)">給評價！</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -113,21 +113,21 @@
 							<div class="row">
 								<div class="col-md-6"> 
 									<h4>推薦｜不推薦</h4>
-									<h5>意見總人數：<span ng-bind="(getRecommendTure() + getRecommendFalse())"></span></h5>
+									<h5>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h5>
 									<progress>
 										<bar value="getRecommendTure() /(getRecommendTure() + getRecommendFalse()) *100 | number:2" type="info">{{getRecommendTure() /(getRecommendTure() + getRecommendFalse()) *100 | number:2}}%</bar>
 										<bar value="getRecommendFalse() /(getRecommendTure() + getRecommendFalse()) *100 | number:2" type="danger">{{getRecommendFalse() /(getRecommendTure() + getRecommendFalse()) *100 | number:2}}%</bar>
 									</progress>
 								</div>
 								<div class="col-md-6"> 
-									<form class="form-group" ng-submit="addPost(course.post.recommend, course.post.message)">
+									<form class="form-group" ng-submit="addPost(recommend, message)">
 										<div class="radio">
-											<label><input type="radio" ng-model="course.post.recommend" value="1" ng-required="!course.post.recommend">推薦</label>
-											<label><input type="radio" ng-model="course.post.recommend" value="0" ng-required="!course.post.recommend">不推薦</label>
+											<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend">推薦</label>
+											<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend">不推薦</label>
 											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
 											<input type="submit" class="btn btn-success" value="POST" />
 										</div>
-										<textarea  class="form-control" ng-model="course.post.message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3"></textarea>
+										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3"></textarea>
 										<br>
 										<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
 									</form>
