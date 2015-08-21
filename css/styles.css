@@ -68,3 +68,15 @@ img {
 #bug:hover{
   right: -5px;
 }
+
+.vis-item{
+  color: #E8EAF6;
+  border-color: #9FA8DA;
+  background-color: #3F51B5;
+}
+
+.vis-item.vis-selected {
+  color: #FFFFFF;
+  border-color: #B71C1C;
+  background-color: #C62828;
+}

@@ -196,7 +196,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.7.0/vis.min.js"></script>
 		<script type="text/javascript">
-
 			// DOM element where the Timeline will be attached
 			var container = document.getElementById('timeline');
 
@@ -222,7 +221,7 @@
 			var timeline = new vis.Timeline(container, items, options);
 			// click button & scale the timeline
 			$('.focusbutton').on('click', function(){
-				timeline.focus($(this).attr('id'));
+				timeline.focus($(this).attr('id'));	
 			});
 		</script>
 		<!-- AngularJS -->

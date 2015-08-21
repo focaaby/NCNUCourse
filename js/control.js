@@ -92,13 +92,9 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 			if (error) {
 				console.log("Login Failed!", error);
 			} else {
+				window.location.reload();
 			//	console.log("Authenticated successfully with payload:", authData);
 			}
 		});
 	}
 });
-
-
-
-
-
