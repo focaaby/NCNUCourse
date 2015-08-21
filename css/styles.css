@@ -23,6 +23,11 @@ body {
   border-color: darkred;
 }
 
+img {
+  width: 70px;
+  height: 70px;
+}
+
 .img-circle {
   width: 100%;
 }

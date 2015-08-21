@@ -122,14 +122,15 @@
 								<div class="col-md-6"> 
 									<form class="form-group" ng-submit="addPost(recommend, message)">
 										<div class="radio">
-											<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend">推薦</label>
-											<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend">不推薦</label>
+											<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1)">推薦</label>
+											<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1)">不推薦</label>
 											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
-											<input type="submit" class="btn btn-success" value="POST" />
+											<input type="submit" class="btn btn-success" value="POST" ng-disabled="(postsBefore == 1)" />
 										</div>
-										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3"></textarea>
+										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
 										<br>
 										<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
+										<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔～</div>
 									</form>
 								</div>
 								<div>

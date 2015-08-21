@@ -8,12 +8,20 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	var key;
 	$scope.score = function(index) {
 		key = index;
+		$scope.postsBefore = 0;
 		$scope.myModalLabel = $scope.courses[key].cname;
 		var postsRef = ref.child(key).child('posts');
 		$scope.posts = $firebaseObject(postsRef);
 		$scope.recommend = "";
 		$scope.message = "";
 		getRecommendNum($scope.courses[index].posts);
+		var authData = ref.getAuth();
+		// check user command before or not
+		angular.forEach($scope.courses[key].posts, function(value, key) {
+			if (value.userid == authData.facebook.id) {	
+				$scope.postsBefore = 1;
+			}
+		});
 	}
 
 	getRecommendNum = function(data) {
@@ -29,16 +37,15 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	}
 
 	$scope.addPost = function (recommendValue, messagesValue) {
-		var postsRef = ref.child(key).child('posts');	
+		var postsRef = ref.child(key).child('posts');
 		$scope.posts = $firebaseObject(postsRef);
-
 		var authData = ref.getAuth();
 		if(authData == null){
 			alert("請先登入Facebook喲!!");
 		} else{
 			if (!messagesValue) {
 				messagesValue = '';
-			};
+			}
 			if (recommendValue == 1) {	
 				$scope.tureNum++;
 			} else {
@@ -54,7 +61,8 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 				date: dateValue
 			});
 			$scope.recommend = "";
-			$scope.message = "";			
+			$scope.message = "";
+			$scope.postsBefore = 1;
 		}
 	}
 
