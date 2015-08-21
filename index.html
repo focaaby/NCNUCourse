@@ -98,7 +98,7 @@
 				</p>
 			</div>
 		</footer>
-		<div id="bug" style="display: block;" ng-click="bug()"><i class="fa fa-cog"></i>問題回報</div>
+		<div id="bug" style="display: block;" ng-show="authObj.$getAuth()" ng-click="bug()" ><i class="fa fa-cog"></i>問題回報</div>
 
 		<!-- Modal -->
 		<div class="modal fade" id="giveScore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -106,7 +106,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel"></h4>
+						<h4 class="modal-title" id="myModalLabel">{{myModalLabel}}</h4>
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">
@@ -170,7 +170,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="bug" tabindex="-1" role="dialog" aria-labelledby="bug">
+		<div class="modal fade" id="bugModal" tabindex="-1" role="dialog" aria-labelledby="bug">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -179,9 +179,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">
+							<textarea  class="form-control" ng-model="report" ng-required="!reports" placeholder="任何問題或是有覺得系統哪邊可以改進，都可以回報給我唷 ヽ(✿ﾟ▽ﾟ)ノ" rows="3"></textarea>
 						</div>
 					</div>
 					<div class="modal-footer">
+						<input type="submit" class="btn btn-primary" ng-click="addReports(report)" value="SUBMIT" />
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>

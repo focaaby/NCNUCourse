@@ -8,7 +8,7 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	// get arrary index
 
 	$scope.score = function(index) {
-		$('#myModalLabel').text($scope.courses[index].cname);
+		$scope.myModalLabel = $scope.courses[index].cname;
 		var postsRef = ref.child(index).child('posts');	
 		var postsObj = $firebaseObject(postsRef);
 		postsObj.$bindTo($scope, "posts");
@@ -31,8 +31,8 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 					messages: messagesValue, 
 					date: dateValue
 				});
-		 		$scope.course.post = [];
-		 	}
+				$scope.course.post = [];
+			}
 		}
 
 		$scope.getRecommendTure = function () {
@@ -56,7 +56,21 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	}
 
 	$scope.bug = function() {
-		$('#bug').modal();
+		$('#bugModal').modal('show');
+	}
+	
+	$scope.addReports = function(reportsValue) {
+		var authData = ref.getAuth();
+		var reportsRef = ref.parent().child('reports');	
+		var reportsObj = $firebaseObject(reportsRef);
+		var dateValue = Date.now();
+		reportsRef.push({
+			userid: authData.facebook.id, 
+			username: authData.facebook.displayName,
+			reports: reportsValue, 
+			date: dateValue
+		});
+		$scope.report = "";	
 	}
 
 	$scope.login = function() {
@@ -68,8 +82,6 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 			}
 		});
 	}
-
-
 });
 
 
