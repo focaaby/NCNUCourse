@@ -130,7 +130,8 @@
 										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
 										<br>
 										<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
-										<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔～</div>
+										<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔!!</div> 
+										<div class="alert alert-success"  ng-show="(postsBefore == 0)">一人只能有一次評論機會 (`・ω・´)</div>
 									</form>
 								</div>
 								<div>
