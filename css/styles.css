@@ -3,8 +3,13 @@
 }
 
 body {
-  min-height: 2000px;
+  min-height: 1000px;
   padding-top: 70px;
+}
+
+tbody {
+ height: 1000px;
+ overflow-y: auto;
 }
 
 .navbar-default {
@@ -67,6 +72,11 @@ img {
 
 #bug:hover{
   right: -5px;
+}
+
+#courseTable {
+  height: 600px;
+  overflow: auto;
 }
 
 .vis-item{
