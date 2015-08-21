@@ -40,6 +40,15 @@ img {
   color: #d9534f; 
 }
 
+.modal-dialog{
+  overflow-y: initial !important
+}
+
+.modal-body{
+  height: 500px; 
+  overflow-y: auto;
+}
+
 #bug {
   width: 115px;
   background: #00897B;
