@@ -58,19 +58,22 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 	$scope.bug = function() {
 		$('#bugModal').modal('show');
 	}
-	
+
 	$scope.addReports = function(reportsValue) {
 		var authData = ref.getAuth();
 		var reportsRef = ref.parent().child('reports');	
-		var reportsObj = $firebaseObject(reportsRef);
 		var dateValue = Date.now();
-		reportsRef.push({
-			userid: authData.facebook.id, 
-			username: authData.facebook.displayName,
-			reports: reportsValue, 
-			date: dateValue
-		});
-		$scope.report = "";	
+		if (!reportsValue) {
+			alert('請輸入回報內容 QAQ');
+		} else {
+			reportsRef.push({
+				userid: authData.facebook.id, 
+				username: authData.facebook.displayName,
+				reports: reportsValue, 
+				date: dateValue
+			});
+			$scope.report = "";	
+		}
 	}
 
 	$scope.login = function() {
