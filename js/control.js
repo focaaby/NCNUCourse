@@ -1,9 +1,9 @@
 var app = angular.module("courseApp", ['ui.bootstrap' ,'firebase']);
 
-app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
+app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 	var ref = new Firebase("https://ncnu-course.firebaseio.com/course1");
 	$scope.authObj = $firebaseAuth(ref);
-	$scope.courses = $firebaseObject(ref);
+	$scope.courses = $firebaseArray(ref);
 
 	var key;
 	$scope.score = function(index) {
@@ -11,7 +11,7 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 		$scope.postsBefore = 0;
 		$scope.myModalLabel = $scope.courses[key].cname;
 		var postsRef = ref.child(key).child('posts');
-		$scope.posts = $firebaseObject(postsRef);
+		$scope.posts = $firebaseArray(postsRef);
 		$scope.recommend = "";
 		$scope.message = "";
 		getRecommendNum($scope.courses[index].posts);
@@ -38,7 +38,7 @@ app.controller("CourseCtrl", function($scope, $firebaseObject, $firebaseAuth) {
 
 	$scope.addPost = function (recommendValue, messagesValue) {
 		var postsRef = ref.child(key).child('posts');
-		$scope.posts = $firebaseObject(postsRef);
+		$scope.posts = $firebaseArray(postsRef);
 		var authData = ref.getAuth();
 		if(authData == null){
 			alert("請先登入Facebook喲!!");
