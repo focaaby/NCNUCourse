@@ -40,11 +40,6 @@
 						<li><a href="http://imcourse-jonilars.rhcloud.com/ncnu.htm">我的課表</a></li>
 						<li><a href="http://imcourse-jonilars.rhcloud.com/ncnu/exchange.htm">換課平台</a></li>
 					</ul>
-					<form class="navbar-form navbar-left" role="search" data-step="2" data-intro="搜尋功能可以輸入「課名、課號、老師、時間」，時間部分建議輸入詳細點比較好 ex: 4e or 5efg">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="課名 / 課號 / 老師" ng-model="searchText">
-						</div>
-					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
   							<a href="#" onclick="javascript:introJs().start();"><i class="fa fa-fw fa-question-circle"></i>使用說明</a>
@@ -72,7 +67,7 @@
 		</section>
 		<hr>
 		<section>
-			<div class="container" id="courseTable" data-step="3" data-intro="這邊是目前1041學期的通識課程列表，登入Facebook後就可以開始給評價囉！">				
+			<div class="container" id="courseTable" data-step="2" data-intro="這邊是目前1041學期的通識課程列表，目前暫時使用control+f來搜尋，登入Facebook後就可以開始給評價囉！">				
 				<table class="table table-bordered table-hover" >
 					<thead>
 						<tr>
@@ -97,7 +92,7 @@
 							<td>{{course.teachers}}</td>
 							<td>{{course.place}}</td>
 							<td>{{course.time}}</td>  
-							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score(key)">課程評價</button></td>
+							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score($index)">課程評價</button></td>
 						</tr>
 					</tbody>
 				</table>
