@@ -90,3 +90,9 @@ img {
   border-color: #B71C1C;
   background-color: #C62828;
 }
+
+.vis-item.red {
+  color: #FFFFFF;
+  border-color: #B71C1C;
+  background-color: #C62828;
+}

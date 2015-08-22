@@ -15,8 +15,10 @@
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
 			ga('create', 'UA-66640410-1', 'auto');
 			ga('send', 'pageview');
+
 		</script>
 		<title>NCNU Course</title>
 	</head>
@@ -48,10 +50,10 @@
   							<a href="#" onclick="javascript:introJs().start();"><i class="fa fa-fw fa-question-circle"></i>使用說明</a>
 						</li>
 						<li ng-show="!authObj.$getAuth()">
-							<a href="#" ng-click="login()">Login</a>
+							<a href="#" ng-click="login()">登入</a>
 						</li>
 						<li ng-show="authObj.$getAuth()">
-  							<a href="#" ng-click="authObj.$unauth()">Logout</a>
+  							<a href="#" ng-click="authObj.$unauth()">登出</a>
 						</li>
 					</ul>
 				</div><!--/.nav-collapse -->
@@ -59,14 +61,14 @@
 		</nav>
 		<section class="container" data-step="1" data-intro=" 歡迎來到NCNU Course！你可以看到這學期的選課時程表，大家記得8月24~26要去填通識志願序喔！！不然就沒有通識課囉～">
 			<h2>NCNU 104-1 選課時程表</h2>
+			<button type="button" class="btn btn-default focusbutton" id="0">大學部學生選填通識課程志願</button>
+			<button type="button" class="btn btn-default focusbutton" id="1">第一階段全校學生網路選課</button>
+			<button type="button" class="btn btn-default focusbutton" id="3">新生訓練營</button>
+			<button type="button" class="btn btn-default focusbutton" id="2">第二階段全校學生網路選課</button>
+			<button type="button" class="btn btn-default focusbutton" id="4">開學</button>
+			<button type="button" class="btn btn-default focusbutton" id="5">加退選</button>
+			<br><br>
 			<div id="timeline"></div>
-			<br>
-			<button type="button" class="btn btn-default focusbutton" id="1">大學部學生選填通識課程志願</button>
-			<button type="button" class="btn btn-default focusbutton" id="2">第一階段全校學生網路選課</button>
-			<button type="button" class="btn btn-default focusbutton" id="4">新生訓練營</button>
-			<button type="button" class="btn btn-default focusbutton" id="3">第二階段全校學生網路選課</button>
-			<button type="button" class="btn btn-default focusbutton" id="5">開學</button>
-			<button type="button" class="btn btn-default focusbutton" id="6">加退選</button>
 		</section>
 		<hr>
 		<section>
@@ -95,7 +97,7 @@
 							<td>{{course.teachers}}</td>
 							<td>{{course.place}}</td>
 							<td>{{course.time}}</td>  
-							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score(key)">給評價！</button></td>
+							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score(key)">課程評價</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -136,7 +138,7 @@
 											<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1)">推薦</label>
 											<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1)">不推薦</label>
 											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
-											<input type="submit" class="btn btn-success" value="POST" ng-disabled="(postsBefore == 1)" />
+											<input type="submit" class="btn btn-success" value="送出" ng-disabled="(postsBefore == 1)" />
 										</div>
 										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
 										<br>
@@ -196,7 +198,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="submit" class="btn btn-primary" ng-click="addReports(report)" value="Submit"/>
+						<input type="submit" class="btn btn-primary" ng-click="addReports(report)" value="確認"/>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -212,28 +214,38 @@
 
 			// Create a DataSet (allows two way data-binding)
 			var items = new vis.DataSet([
-				{	id: 1, content: '大學部學生選填通識課程志願',
+				{	id: 0, content: '大學部學生選填通識課程志願',
 					start: '2015-08-24 13:30:00', end: '2015-08-26 12:00:00'},
-				{	id: 2, content: '第一階段全校學生網路選課',
+				{	id: 1, content: '第一階段全校學生網路選課',
 					start: '2015-08-27 09:00:00', end: '2015-08-31 12:00:00'},
-				{	id: 3, content: '第二階段全校學生網路選課',
+				{	id: 2, content: '第二階段全校學生網路選課',
 					start: '2015-09-10 09:00:00', end: '2015-09-14 12:00:00'},
-				{	id: 4, content: '新生訓練營',
+				{	id: 3, content: '新生訓練營',
 					start: '2015-09-07 09:00:00', end: '2015-09-10 24:00:00'},
-				{	id: 5, content: '開學',
-					start: '2015-09-14 09:00:00', end: '2015-09-14 24:00:00'},
-				{	id: 6, content: '加退選',
+				{	id: 4, content: '開學',
+					start: '2015-09-14 09:00:00'},
+				{	id: 5, content: '加退選',
 					start: '2015-09-15 09:00:00', end: '2015-09-29 12:00:00'},
 			]);
 
 			// Configuration for the Timeline
-			var options = {};
+			var options = {
+				minHeight: '150px', 
+				maxHeight: '150px'
+			};
 			// Create a Timeline
 			var timeline = new vis.Timeline(container, items, options);
 			// click button & scale the timeline
+
+			timeline.moveTo(timeline.getCurrentTime());
 			$('.focusbutton').on('click', function(){
-				timeline.focus($(this).attr('id'));	
+				timeline.setSelection(($(this).attr('id')), {
+					focus: true
+				});
 			});
+
+
+			
 		</script>
 		<!-- AngularJS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
