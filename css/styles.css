@@ -102,3 +102,12 @@ img {
   border-color: #B71C1C;
   background-color: #C62828;
 }
+
+#timeline-text {
+  display: inline;
+}
+
+#timeline-button {
+  position: absolute;
+  margin-left: 20px; 
+}

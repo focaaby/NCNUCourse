@@ -24,6 +24,8 @@
 	</head>
 
 	<body ng-app="courseApp" ng-controller="CourseCtrl">
+
+		<!-- Navabar -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
@@ -54,18 +56,32 @@
 				</div><!--/.nav-collapse -->
 			</div><!--/.container-fluid -->
 		</nav>
+
+		
+
+		<!-- Timeline -->
 		<section class="container" data-step="1" data-intro=" 歡迎來到NCNU Course！你可以看到這學期的選課時程表，大家記得8月24~26要去填通識志願序喔！！不然就沒有通識課囉～">
-			<h2>NCNU 104-1 選課時程表</h2>
-			<button type="button" class="btn btn-default focusbutton" id="0">大學部學生選填通識課程志願</button>
-			<button type="button" class="btn btn-default focusbutton" id="1">第一階段全校學生網路選課</button>
-			<button type="button" class="btn btn-default focusbutton" id="3">新生訓練營</button>
-			<button type="button" class="btn btn-default focusbutton" id="2">第二階段全校學生網路選課</button>
-			<button type="button" class="btn btn-default focusbutton" id="4">開學</button>
-			<button type="button" class="btn btn-default focusbutton" id="5">加退選</button>
-			<br><br>
-			<div id="timeline"></div>
+			<div id="timeline-header">
+				<h2 id="timeline-text">NCNU 104-1 選課時程表</h2>
+				<button id="timeline-button" class="btn btn-default" role="button" data-toggle="collapse" href="#timeline-div"><i class="fa fa-fw fa-lg fa-plus-circle"></i>展開</button>
+			</div>
+			
+			<div id="timeline-div">
+				<br>
+				<button type="button" class="btn btn-default focusbutton" id="0">大學部學生選填通識課程志願</button>
+				<button type="button" class="btn btn-default focusbutton" id="1">第一階段全校學生網路選課</button>
+				<button type="button" class="btn btn-default focusbutton" id="3">新生訓練營</button>
+				<button type="button" class="btn btn-default focusbutton" id="2">第二階段全校學生網路選課</button>
+				<button type="button" class="btn btn-default focusbutton" id="4">開學</button>
+				<button type="button" class="btn btn-default focusbutton" id="5">加退選</button>
+				<br><br>
+				<div id="timeline"></div>	
+			</div>
+			
 		</section>
 		<hr>
+
+		<!-- course -->
 		<section>
 			<div class="container" id="courseTable" data-step="2" data-intro="這邊是目前1041學期的通識課程列表，目前暫時使用control+f來搜尋，登入Facebook後就可以開始給評價囉！">				
 				<table class="table table-bordered table-hover" >
@@ -237,8 +253,7 @@
 				});
 			});
 
-
-			
+			$('#timeline-div').collapse('toggle');
 		</script>
 		<!-- AngularJS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
