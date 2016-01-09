@@ -73,12 +73,7 @@
 						<tr>
 							<td>課名</td>
 							<td>課號</td>
-							<td>班別</td>
-							<td>開課系所代碼</td>
-							<td>年級</td>
 							<td>開課教師</td>
-							<td>地點</td>
-							<td>時間</td>
 							<td></td>
 						</tr>
 					</thead>
@@ -86,12 +81,7 @@
 						<tr ng-repeat="(key, course) in courses | filter:searchText"> 
 							<td>{{course.cname}}</td>
 							<td>{{course.courseid}}</td>
-							<td>{{course.class}}</td>
-							<td>{{course.departid}}</td>
-							<td>{{course.grade}}</td>
 							<td>{{course.teachers}}</td>
-							<td>{{course.place}}</td>
-							<td>{{course.time}}</td>  
 							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score($index)">課程評價</button></td>
 						</tr>
 					</tbody>
