@@ -116,7 +116,7 @@
 
 		<!-- Modal -->
 		<div class="modal fade" id="giveScore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -125,33 +125,8 @@
 					<div class="modal-body">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-md-6"> 
-									<h4>推薦｜不推薦</h4>
-									<h5>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h5>
-									<progress>
-										<bar value="tureNum / (tureNum + falseNum) * 100 | number:2" type="info">{{tureNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
-										<bar value="falseNum / (tureNum + falseNum) * 100 | number:2" type="danger">{{falseNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
-									</progress>
-								</div>
-								<div class="col-md-6"> 
-									<form class="form-group" ng-submit="addPost(recommend, message)">
-										<div class="radio">
-											<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1)">推薦</label>
-											<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1)">不推薦</label>
-											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
-											<input type="submit" class="btn btn-success" value="送出" ng-disabled="(postsBefore == 1)" />
-										</div>
-										<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
-										<br>
-										<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
-										<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔!!</div> 
-										<div class="alert alert-success"  ng-show="(postsBefore == 0)">一人只能有一次評論機會 (`・ω・´)</div>
-									</form>
-								</div>
-								<div>
+								<div class="col-md-6">
 									<h1>評價溜</h1>
-								</div>
-								<div>
 									<table class="table table-hover" >
 										<tbody>
 											<tr ng-repeat="post in posts | orderBy:'-date'">
@@ -183,6 +158,33 @@
 											</tr>
 										</tbody>
 									</table>
+								</div>
+
+								<div class="col-md-6">
+									<div> 
+										<h4>推薦｜不推薦</h4>
+										<h5>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h5>
+										<progress>
+											<bar value="tureNum / (tureNum + falseNum) * 100 | number:2" type="info">{{tureNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
+											<bar value="falseNum / (tureNum + falseNum) * 100 | number:2" type="danger">{{falseNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
+										</progress>
+									</div>
+
+									<div> 
+										<form class="form-group" ng-submit="addPost(recommend, message)">
+											<div class="radio">
+												<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1)">推薦</label>
+												<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1)">不推薦</label>
+												<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
+												<input type="submit" class="btn btn-success" value="送出" ng-disabled="(postsBefore == 1)" />
+											</div>
+											<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
+											<br>
+											<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
+											<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔!!</div> 
+											<div class="alert alert-success"  ng-show="(postsBefore == 0)">一人只能有一次評論機會 (`・ω・´)</div>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
