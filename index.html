@@ -95,9 +95,9 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="(key, course) in courses | filter:searchText"> 
-							<td>{{course.cname}}</td>
-							<td>{{course.courseid}}</td>
-							<td>{{course.teachers}}</td>
+							<td ng-bind="course.cname"></td>
+							<td ng-bind="course.courseid"></td>
+							<td ng-bind="course.teachers"></td>
 							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score($index)">課程評價</button></td>
 						</tr>
 					</tbody>
@@ -120,7 +120,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">{{myModalLabel}}</h4>
+						<h4 class="modal-title" id="myModalLabel" ng-bind="myModalLabel"></h4>
 					</div>
 					<div class="modal-body">
 						<div class="container-fluid">
@@ -137,7 +137,7 @@
 												</td>
 												<td>
 													<span class="comment-text">
-														<a ng-href='http://fb.com/{{post.userid}}'>{{post.username}}</a>
+														<a ng-href='http://fb.com/{{post.userid}}' ng-bind="post.username"></a>
 													</span>
 													
 													<span class="comment-text" ng-show="(post.recommend == 1)">
@@ -147,12 +147,8 @@
 														<i class="fa fa-lg fa-thumbs-down"></i>
 													</span>
 
-													<span class="comment-text comment-text-right">
-														{{post.date | date:'mediumDate'}}
-													</span>
-													<div class="comment-messages">
-														{{post.messages}}
-													</div>
+													<span class="comment-text comment-text-right" ng-bind="post.date | date:'mediumDate'"></span>
+													<div class="comment-messages" ng-bind="post.messages"></div>
 												</td>
 												
 											</tr>
@@ -173,12 +169,12 @@
 									<div> 
 										<form class="form-group" ng-submit="addPost(recommend, message)">
 											<div class="radio">
-												<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1)">推薦</label>
-												<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1)">不推薦</label>
+												<label><input type="radio" ng-model="recommend" value="1" ng-required="!recommend" ng-disabled="(postsBefore == 1) || !authObj.$getAuth()">推薦</label>
+												<label><input type="radio" ng-model="recommend" value="0" ng-required="!recommend" ng-disabled="(postsBefore == 1) || !authObj.$getAuth()">不推薦</label>
 												<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</</span>
-												<input type="submit" class="btn btn-success" value="送出" ng-disabled="(postsBefore == 1)" />
+												<input type="submit" class="btn btn-success" value="送出" ng-disabled="(postsBefore == 1) || !authObj.$getAuth()" />
 											</div>
-											<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1)"></textarea>
+											<textarea  class="form-control" ng-model="message" placeholder="推薦與否，或是留下對這堂課的想法吧 ლ(◉◞౪◟◉ )ლ" rows="3" ng-disabled="(postsBefore == 1) || !authObj.$getAuth()"></textarea>
 											<br>
 											<div class="alert alert-danger"  ng-show="!authObj.$getAuth()">還沒登入，無法送出評價唷～</div>
 											<div class="alert alert-danger"  ng-show="(postsBefore == 1)">已經留過評論，不能再留了喔!!</div> 
