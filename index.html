@@ -149,23 +149,31 @@
 									<table class="table table-hover" >
 										<tbody>
 											<tr ng-repeat="post in posts | orderBy:'-date'">
-												<td width="15%">
-													<img class="img-circle" ng-src="{{post.img}}">
-												</td>
-												<td width="19%">
-													<a ng-href='http://fb.com/{{post.userid}}'  >{{post.username}}</a>
-													<br>
-													{{post.date | date:'mediumDate'}}
-												</td>
-												<td width="5%" valign="center">
-													<span ng-show="(post.recommend == 1)" >
-														<i class="fa fa-2x fa-thumbs-up"></i>
-													</span>
-													<span ng-show="(post.recommend == 0)" >
-														<i class="fa fa-2x fa-thumbs-down"></i>
+												<td>
+													<span class="comment-text">
+														<img class="img-circle" ng-src="http://graph.facebook.com/{{post.userid}}/picture">
 													</span>
 												</td>
-												<td>{{post.messages}}</td>
+												<td>
+													<span class="comment-text">
+														<a ng-href='http://fb.com/{{post.userid}}'>{{post.username}}</a>
+													</span>
+													
+													<span class="comment-text" ng-show="(post.recommend == 1)">
+														<i class="fa fa-lg fa-thumbs-up"></i>
+													</span>
+													<span class="comment-text" ng-show="(post.recommend == 0)">
+														<i class="fa fa-lg fa-thumbs-down"></i>
+													</span>
+
+													<span class="comment-text comment-text-right">
+														{{post.date | date:'mediumDate'}}
+													</span>
+													<div class="comment-messages">
+														{{post.messages}}
+													</div>
+												</td>
+												
 											</tr>
 										</tbody>
 									</table>
