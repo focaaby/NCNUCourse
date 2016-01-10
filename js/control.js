@@ -1,4 +1,4 @@
-var app = angular.module("courseApp", ['ui.bootstrap' ,'firebase']);
+var app = angular.module("courseApp", ['firebase', 'chart.js']);
 
 app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 	var ref = new Firebase("https://ncnu-course.firebaseio.com/course1");
