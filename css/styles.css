@@ -6,10 +6,6 @@ body {
   padding-top: 70px;
 }
 
-tbody {
- overflow-y: auto;
-}
-
 .navbar-default {
   background-color: #009688;
   border-color: #e7e7e7;
@@ -50,14 +46,6 @@ img {
 }
 .fa-thumbs-down {
   color: #d9534f; 
-}
-
-.modal-dialog {
-  overflow-y: initial !important;
-}
-
-#giveScore .modal-body {
-  overflow-y: auto;
 }
 
 #bug {
