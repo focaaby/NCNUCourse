@@ -162,7 +162,7 @@
 								<div class="col-md-6">
 									<div> 
 										<h4>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h4>
-										<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas> 
+										<canvas ng-hide="(tureNum + falseNum) == 0" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas> 
 									</div>
 
 									<div> 
