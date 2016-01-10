@@ -14,7 +14,10 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 		$scope.posts = $firebaseArray(postsRef);
 		$scope.recommend = "";
 		$scope.message = "";
-		getRecommendNum($scope.courses[index].posts);
+
+		$scope.tureNum = $scope.courses[index].recommend;
+		$scope.falseNum = $scope.courses[index].unrecommend;
+		
 		var authData = ref.getAuth();
 		// check user command before or not
 		angular.forEach($scope.courses[key].posts, function(value, key) {
@@ -24,20 +27,9 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 		});
 	}
 
-	getRecommendNum = function(data) {
-		$scope.tureNum = 0;
-		$scope.falseNum = 0;
-		angular.forEach(data, function(value, key) {			
-			if (value.recommend == 1) {	
-				$scope.tureNum++;
-			} else {
-				$scope.falseNum++;	
-			}
-		});
-	}
-
 	$scope.addPost = function (recommendValue, messagesValue) {
 		var postsRef = ref.child(key).child('posts');
+		var courseRef = ref.child(key);
 		$scope.posts = $firebaseArray(postsRef);
 		var authData = ref.getAuth();
 		if(authData == null){
@@ -51,6 +43,10 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 			} else {
 				$scope.falseNum++;	
 			}
+			courseRef.update({
+				recommend: $scope.tureNum, 
+				unrecommend: $scope.falseNum
+			});
 			var dateValue = Date.now();
 			postsRef.push({
 				userid: authData.facebook.id, 
@@ -85,6 +81,7 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 			});
 			$scope.report = "";	
 		}
+		$('#bugModal').modal('hide');
 	}
 
 	$scope.login = function() {

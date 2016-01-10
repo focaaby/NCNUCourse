@@ -57,8 +57,6 @@
 			</div><!--/.container-fluid -->
 		</nav>
 
-		
-
 		<!-- Timeline -->
 		<section class="container" data-step="1" data-intro=" 歡迎來到NCNU Course！你可以看到這學期的選課時程表，大家記得8月24~26要去填通識志願序喔！！不然就沒有通識課囉～">
 			<div id="timeline-header">
@@ -87,17 +85,21 @@
 				<table class="table table-bordered table-hover" >
 					<thead>
 						<tr>
-							<td>課名</td>
 							<td>課號</td>
+							<td>課名</td>
 							<td>開課教師</td>
+							<td>推薦人數</td>
+							<td>評價人數</td>
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="(key, course) in courses | filter:searchText"> 
-							<td ng-bind="course.cname"></td>
 							<td ng-bind="course.courseid"></td>
+							<td ng-bind="course.cname"></td>
 							<td ng-bind="course.teachers"></td>
+							<td ng-bind="course.recommend"></td>
+							<td ng-bind="(course.recommend + course.unrecommend)"></td>
 							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giveScore" ng-click="score($index)">課程評價</button></td>
 						</tr>
 					</tbody>
