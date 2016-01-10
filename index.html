@@ -161,12 +161,8 @@
 
 								<div class="col-md-6">
 									<div> 
-										<h4>推薦｜不推薦</h4>
-										<h5>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h5>
-										<progress>
-											<bar value="tureNum / (tureNum + falseNum) * 100 | number:2" type="info">{{tureNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
-											<bar value="falseNum / (tureNum + falseNum) * 100 | number:2" type="danger">{{falseNum / (tureNum + falseNum) * 100 | number:2}}%</bar>
-										</progress>
+										<h4>意見總人數：<span ng-bind="(tureNum + falseNum)"></span></h4>
+										<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas> 
 									</div>
 
 									<div> 

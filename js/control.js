@@ -5,6 +5,10 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 	$scope.authObj = $firebaseAuth(ref);
 	$scope.courses = $firebaseArray(ref);
 
+  	$scope.labels = ["推薦", "不推薦"];
+  	
+  	$scope.colours =['#5bc0de', '#d9534f'];
+
 	var key;
 	$scope.score = function(index) {
 		key = index;
@@ -17,6 +21,7 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 
 		$scope.tureNum = $scope.courses[index].recommend;
 		$scope.falseNum = $scope.courses[index].unrecommend;
+		$scope.data = [$scope.courses[index].recommend, $scope.courses[index].unrecommend];
 		
 		var authData = ref.getAuth();
 		// check user command before or not
@@ -40,8 +45,10 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 			}
 			if (recommendValue == 1) {	
 				$scope.tureNum++;
+				$scope.data[0]++;
 			} else {
 				$scope.falseNum++;	
+				$scope.data[1]++;
 			}
 			courseRef.update({
 				recommend: $scope.tureNum, 
@@ -94,4 +101,8 @@ app.controller("CourseCtrl", function($scope, $firebaseArray, $firebaseAuth) {
 			}
 		});
 	}
+
+	$('#giveScore').on('hidden.bs.modal', function (e) {
+		$scope.data = [0, 0];
+	})
 });
