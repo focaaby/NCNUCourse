@@ -16,6 +16,7 @@
 - [ ] use bower or npm to manage plugins.
 - [ ] use a factory/service to share data & functions across controllers. [Reference](http://stackoverflow.com/questions/32214567/angularui-modal-dialog-calling-dialogs-controller-function-on-rendered-even)
 - [ ] use angular filter & orderby
+- [ ] Firebase Security & Rules
 
 #### UI
 - [x] used donut chart
