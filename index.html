@@ -21,6 +21,19 @@
 			ga('send', 'pageview');
 
 		</script>
+		
+		<!-- Hotjar Tracking Code for http://focaaby.github.io/ncnucourse/ -->
+		<script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:160660,hjsv:5};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+		</script>
+
 		<title>NCNU Course</title>
 	</head>
 
@@ -45,13 +58,13 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-  							<a href="#" onclick="javascript:introJs().start();"><i class="fa fa-fw fa-question-circle"></i>使用說明</a>
+							<a href="#" onclick="javascript:introJs().start();"><i class="fa fa-fw fa-question-circle"></i>使用說明</a>
 						</li>
 						<li ng-show="!authObj.$getAuth()">
 							<a href="#" ng-click="login()">登入</a>
 						</li>
 						<li ng-show="authObj.$getAuth()">
-  							<a href="#" ng-click="authObj.$unauth()">登出</a>
+							<a href="#" ng-click="authObj.$unauth()">登出</a>
 						</li>
 					</ul>
 				</div><!--/.nav-collapse -->
