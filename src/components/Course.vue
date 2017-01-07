@@ -1,30 +1,32 @@
 <template>
-  <div>
-    <el-table
-      :data="courses"
-      height="600"
-      border
-      style="width: 100%">
-      <el-table-column
-        prop="courseid"
-        label="課號"
-        sortable>
-      </el-table-column>
-      <el-table-column
-        prop="cname"
-        label="課名">
-      </el-table-column>
-      <el-table-column
-        prop="teachers"
-        label="開課教師">
-      </el-table-column>
-      <el-table-column
-        prop="recommend"
-        label="推薦人數"
-        sortable>
-      </el-table-column>
-    </el-table>
-  </div>
+  <el-row>
+    <el-col :span="24">
+      <el-table
+        :data="courses"
+        height="600"
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="courseid"
+          label="課號"
+          sortable>
+        </el-table-column>
+        <el-table-column
+          prop="cname"
+          label="課名">
+        </el-table-column>
+        <el-table-column
+          prop="teachers"
+          label="開課教師">
+        </el-table-column>
+        <el-table-column
+          prop="recommend"
+          label="推薦人數"
+          sortable>
+        </el-table-column>
+      </el-table>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
