@@ -1,27 +1,29 @@
 <template>
   <div>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <td>課號</td>
-          <td>課名</td>
-          <td>開課教師</td>
-          <td>推薦人數</td>
-          <td>評價人數</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="course in courses">
-          <td>{{ course.courseid }}</td>
-          <td>{{ course.cname }}</td>
-          <td>{{ course.teachers }}</td>
-          <td>{{ course.recommend }}</td>
-          <td>{{ course.recommend + course.unrecommend }}</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <el-table
+      :data="courses"
+      height="600"
+      border
+      style="width: 100%">
+      <el-table-column
+        prop="courseid"
+        label="課號"
+        sortable>
+      </el-table-column>
+      <el-table-column
+        prop="cname"
+        label="課名">
+      </el-table-column>
+      <el-table-column
+        prop="teachers"
+        label="開課教師">
+      </el-table-column>
+      <el-table-column
+        prop="recommend"
+        label="推薦人數"
+        sortable>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -44,7 +46,7 @@ export default {
   name: 'course',
   data() {
     return {
-      courses: {},
+      courses: [],
     };
   },
   beforeMount() {
