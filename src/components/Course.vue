@@ -28,7 +28,7 @@
           <template scope="scope">
             <el-button
               size="small"
-              @click="handleTest(scope.row)">
+              @click="handleShowDialog(scope.row)">
               Test</el-button>
           </template>
         </el-table-column>
@@ -92,10 +92,10 @@ export default {
     };
   },
   methods: {
-    handleTest(row) {
+    handleShowDialog(row) {
       this.dialogVisible = true;
       this.currentCourse = row;
-      const obj = row.posts;
+      const obj = row.posts || {};
       this.currentPosts = Object.keys(obj).map(k => obj[k]);
     },
   },
