@@ -40,19 +40,11 @@ const config = {
 
 firebase.initializeApp(config);
 const db = firebase.database();
-const ref = db.ref('/course1/');
 
 export default {
   name: 'course',
-  data() {
-    return {
-      courses: [],
-    };
-  },
-  beforeMount() {
-    ref.once('value').then((snapshot) => {
-      this.courses = snapshot.val();
-    });
+  firebase: {
+    courses: db.ref('/course1/'),
   },
 };
 </script>

@@ -4,10 +4,11 @@ import Vue from 'vue';
 import 'element-ui/lib/theme-default/index.css';
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/zh-TW';
+import VueFire from 'vuefire';
 import App from './App';
-// import firebase from 'firebase';
 
 Vue.use(ElementUI, { locale });
+Vue.use(VueFire);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
