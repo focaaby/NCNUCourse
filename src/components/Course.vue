@@ -29,30 +29,34 @@
             <el-button
               size="small"
               @click="handleShowDialog(scope.row)">
-              Test</el-button>
+              查看</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-col>
 
-    <el-dialog title="提示" v-model="dialogVisible" size="large">
+    <el-dialog title="課程資訊" v-model="dialogVisible" size="large">
       <span slot="footer" class="dialog-footer">
 
         <el-row>
-          <el-col :span="24">
+          <el-col :span="12">
             <el-table
               :data="currentPosts"
-              height="400"
-              border
-              style="width: 100%">
-              <el-table-column
-                prop="username"
-                label="人">
+              :stripe="true"
+              :show-header="false">
+              <el-table-column >
+                <template scope="scope">
+                  <img :src="'https://graph.facebook.com/'+ scope.row.userid + '/picture'">
+                </template>
               </el-table-column>
-              <el-table-column
-                prop="messages"
-                label="內容"
-                sortable>
+              <el-table-column>
+                <template scope="scope">
+                  <span>
+                    <a :href="'https://facebook.com/'+ scope.row.userid + '/picture'"</a>
+                    </span>
+									<span> {{scope.row.date}} </span>
+									<div> {{scope.row.messages}} </div>
+                </template>
               </el-table-column>
             </el-table>
           </el-col>
