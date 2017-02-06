@@ -42,18 +42,23 @@
           <el-col :span="12">
             <el-table
               :data="currentPosts"
+              :border="true"
               :stripe="true"
-              :show-header="false">
-              <el-table-column >
-                <template scope="scope">
-                  <img :src="'https://graph.facebook.com/'+ scope.row.userid + '/picture'">
+              :show-header="false"
+              height="450">
+              <el-table-column
+
+                align="left">
+                <template scope="scope" style="width:25%">
+                  <img class="img-circle" :src="'https://graph.facebook.com/'+ scope.row.userid + '/picture'">
                 </template>
               </el-table-column>
-              <el-table-column>
+              <el-table-column
+                align="left">
                 <template scope="scope">
                   <span>
                     <a :href="'https://facebook.com/'+ scope.row.userid + '/picture'"</a>
-                    </span>
+                  </span>
                   <span> {{displayDate(scope.row.date)}} </span>
 									<div> {{scope.row.messages}} </div>
                 </template>
@@ -113,4 +118,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.img-circle {
+  width: 45px;
+  border-radius: 50%;
+}
+.pic-col {
+  width: 25%;
+}
 </style>
