@@ -54,7 +54,7 @@
                   <span>
                     <a :href="'https://facebook.com/'+ scope.row.userid + '/picture'"</a>
                     </span>
-									<span> {{scope.row.date}} </span>
+                  <span> {{displayDate(scope.row.date)}} </span>
 									<div> {{scope.row.messages}} </div>
                 </template>
               </el-table-column>
@@ -101,6 +101,11 @@ export default {
       this.currentCourse = row;
       const obj = row.posts || {};
       this.currentPosts = Object.keys(obj).map(k => obj[k]);
+    },
+    displayDate(timestamp) {
+      const dateArr = new Date(timestamp).toString().split(' ', 4);
+      const newDate = `${dateArr[1]} ${dateArr[2]}, ${dateArr[3]}`;
+      return newDate;
     },
   },
 };
